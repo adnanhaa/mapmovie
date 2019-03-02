@@ -8,9 +8,9 @@ Demo page [https://mapmovie.herokuapp.com](https://mapmovie.herokuapp.com)
 ### Usage
 
 ```bash
-git clone https://github.com/adnanhaa/movieapp.git
+git clone https://github.com/adnanhaa/mapmovie.git
 
-cd movieapp
+cd mapmovie
 
 npm install
 
