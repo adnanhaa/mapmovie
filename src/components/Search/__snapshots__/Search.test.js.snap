@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search should render banner text correctly with given strings 1`] = `
+<div
+  className="undefined undefined"
+>
+  <div>
+    <div>
+      <SearchIcon />
+    </div>
+    <input
+      key="search"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+  <Suggestions
+    onItemClickHandler={[Function]}
+  />
+</div>
+`;
+
+exports[`Search should render correctly in "debug" mode 1`] = `
+<div
+  className="undefined undefined"
+>
+  <div>
+    <div>
+      <SearchIcon />
+    </div>
+    <input
+      key="search"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+  <Suggestions
+    onItemClickHandler={[Function]}
+  />
+</div>
+`;
+
+exports[`Search should render correctly with no props 1`] = `
+<div
+  className="undefined undefined"
+>
+  <div>
+    <div>
+      <SearchIcon />
+    </div>
+    <input
+      key="search"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+  <Suggestions
+    onItemClickHandler={[Function]}
+  />
+</div>
+`;

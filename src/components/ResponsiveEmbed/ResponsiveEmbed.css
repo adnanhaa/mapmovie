@@ -1,0 +1,19 @@
+.Embed {
+    width: 100%;
+    border-radius: 0px;
+    margin: 0;
+    box-shadow: #dadada 0px 0px 0px;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+    background: black;
+    border-bottom: 1px solid #dadada;
+}
+.Embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

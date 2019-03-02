@@ -1,0 +1,11 @@
+.Main {
+  background: white;
+  margin: 0px auto !important;
+  box-shadow: 0 0 0px lightgrey;
+  padding: 5px 0px;
+  box-sizing: border-box;
+  overflow: hidden;
+  max-width: 720px !important;
+  min-width: 320px !important;
+}
+
