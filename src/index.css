@@ -15,7 +15,30 @@ body {
   grid-gap: .5rem;
 }
 
-.pointer {
+:global .main{
+  padding: 0 5px;
+}
+:global .content{
+  min-height: 500px;
+}
+
+:global a {
+  text-decoration: none !important;
+}
+
+:global .card{
+  background: #242c38;
+  -webkit-box-shadow: 0 0 10px #212833;
+  box-shadow: 1px 1px 10px #1a212c;
+  border: 0 solid white;
+  margin-bottom: 10px !important;
+  min-height: 204px;
+  overflow:hidden;
+  border-radius: 5px;
+}
+
+
+:global .pointer {
   cursor: pointer;
 }
 
@@ -32,7 +55,6 @@ body {
 :global .noSelect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -45,4 +67,8 @@ body {
 :global .reset{
   margin:0 !important;
   padding:0 !important;
+}
+
+:global .text_white{
+  color:white !important;
 }

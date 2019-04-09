@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import * as PropTypes from "prop-types";
 import {ApiConstants} from "../../services/api/apiConstants";
-import BackButton from "../../components/BackButton";
 import ResponsiveEmbed from "../../components/ResponsiveEmbed/ResponsiveEmbed";
 import {apiService} from "../../services/api/apiService";
 import Spinner from "../../components/Spinner";
 import ErrorView from "../../components/ErrorView";
 import ItemImage from "../../components/Item/ItemImage";
+import DetailsNav from "./DetailsNav";
 import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import {withTranslate} from "../../translate/Translate";
 
 /*
 * Detail wrapper page component
@@ -62,13 +62,13 @@ class Details extends Component{
 
     render(){
         return <div>
-            {/*empty app header - page can contain own header*/}
             <Header/>
-                <section>
-                    {this.getContent()}
-                </section>
+            <DetailsNav/>
+            {/*empty app header - page can contain own header*/}
+            <section className="main content mt-1">
+                {this.getContent()}
+            </section>
             {/*empty app footer - page can contain own footer*/}
-            <Footer/>
         </div>
     }
 
@@ -78,30 +78,32 @@ class Details extends Component{
 
         if(isLoading) {
             return <div>
-                <BackButton/>
                 <Spinner text={'Loading...'}/>
             </div>;
         }else if(error) {
             return <div>
-                <BackButton/>
                 <ErrorView message={'Oops... ' + error}/>
             </div>
         }else{
             if(item !== null) {
                 return <div>
-                    <BackButton/>
                     {/*extract to Card components by types*/}
                     <div className="card">
-                        {this.getImgOrVideo()}
-                        <div className="card-body">
-                            <h4 className="card-title">{item.title === undefined ? item.name : item.title}</h4>
-                            <p className="card-text">{item.overview}</p>
+                        <div className="row">
+                            <div className= "col-sm-12 col-md-6">
+                                {this.getImgOrVideo()}
+                            </div>
+                            <div className="col-sm-12 col-md-6 p-3">
+                                <h4 className="card-title text_white ml-2">
+                                    {item.title === undefined ? item.name : item.title}
+                                </h4>
+                                <p className="card-text text_white ml-2">{item.overview}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             }else{
                 return <div>
-                    <BackButton/>
                     <ErrorView message={'Oops... Something went wrong... please refresh'}/>
                 </div>
             }
@@ -146,4 +148,4 @@ Details.propTypes = {
     })
 };
 
-export default Details;
+export default withTranslate(Details);

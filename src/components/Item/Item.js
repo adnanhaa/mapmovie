@@ -2,6 +2,7 @@ import {ApiConstants} from "../../services/api/apiConstants";
 import React from "react";
 import * as PropTypes from "prop-types";
 import ItemImage from "./ItemImage";
+import Rating from "../Rating";
 
 const Item = props => {
 
@@ -16,8 +17,18 @@ const Item = props => {
 
     return <div className="card mb-2">
         <ItemImage src = {fullPath}/>
-        <div className="card-body p-3">
-            <h5 className="card-title text-center text-dark">{item.title === undefined ? item.name : item.title}</h5>
+
+        <div className="card-body p-1">
+            <div className="p-1">
+                <div className="float-left mr-3">
+                    <Rating rate={item.vote_average}/>
+                </div>
+
+                <div className="">
+                    <h6 className="text-white mb-1">{item.title === undefined ? item.name : item.title}</h6>
+                    <h6 className="text-white mb-0">24.12.2017.</h6>
+                </div>
+            </div>
         </div>
     </div>;
 };

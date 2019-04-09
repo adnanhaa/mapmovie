@@ -6,6 +6,10 @@ import {getStore} from "./_store/store";
 
 const store = getStore();
 
-ReactDOM.render(<Root store={store} />, document.getElementById('app'));
+ReactDOM.render(
+    <Root store={store} />,
+    document.getElementById('app')
+);
+
 
 module.hot.accept();

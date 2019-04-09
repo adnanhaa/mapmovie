@@ -1,11 +1,15 @@
-.Main {
+.App {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: white;
-  margin: 0px auto !important;
-  box-shadow: 0 0 0px lightgrey;
-  padding: 5px 0px;
+  margin: 0 auto !important;
+  box-shadow: 0 0 0 lightgrey;
+  padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  max-width: 720px !important;
+  max-width: 960px !important;
   min-width: 320px !important;
 }
+
 

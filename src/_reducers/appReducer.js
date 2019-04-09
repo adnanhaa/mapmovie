@@ -9,7 +9,8 @@ const initialState = {
     search : '',
     filters : {
         period : 'week',       // week, day
-        region : 'test'        // add some other filters
+        movies : 'trending',
+        shows : 'trending'
     }
 };
 
@@ -38,8 +39,10 @@ function appReducer(state = initialState, action) {
                     ...state.filters,
                     period : action.payload.filters.period !== undefined ?
                         action.payload.filters.period : state.filters.period,
-                    region : action.payload.filters.region !== undefined ?
-                        action.payload.filters.region : state.filters.region,
+                    movies : action.payload.filters.movies !== undefined ?
+                        action.payload.filters.movies : state.filters.movies,
+                    shows : action.payload.filters.shows !== undefined ?
+                        action.payload.filters.shows : state.filters.shows,
                 }
             };
 

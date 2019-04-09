@@ -6,6 +6,8 @@ import {
 
 /*
 * TODO: improve loading data with loadedAt time
+* There is no need for this store because only one component use this but
+* this is implemented to show redux and thunk usability
 */
 const initialState = {
     isLoading : false,

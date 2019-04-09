@@ -3,6 +3,7 @@ import {Api, ApiConstants, ApiFilters} from "./apiConstants";
 
 export const apiService = {
     fetchDataFor,
+    fetchDataBy,
     searchData,
     cleanFilters,
     fetchKeywords,
@@ -10,6 +11,9 @@ export const apiService = {
     fetchItemVideos
 };
 
+
+const SHOWS = "shows";
+const MOVIES = "movies";
 /*
  * Fetch data for page and period with updateing store
  * @param {string} page
@@ -18,6 +22,17 @@ export const apiService = {
  */
 function fetchDataFor(page, period){
     return fetchData(_getUrl(page, period));
+}
+
+/*
+ * Fetch data for page by view with updateing store
+ * @param {string} page
+ * @param {string} view
+ * @return {function} The function that dispatch action on the thunk middleware and store
+ */
+function fetchDataBy(page, view){
+    //console.log("DataBA",_getViewUrl(page, view));
+    return fetchData(_getViewUrl(page, view));
 }
 
 /*
@@ -46,10 +61,12 @@ function fetchKeywords(value){
  * @return {Object} Promise
  */
 function fetchItemDetails(type, id){
-    if(type === "shows"){
+    if(type === SHOWS){
         return _fetchShow(id);
-    }else if(type === "movies"){
-        return _fetchMovie(id);
+    }else {
+        if(type === MOVIES){
+                return _fetchMovie(id);
+            }
     }
     return null;
 }
@@ -61,9 +78,9 @@ function fetchItemDetails(type, id){
  * @return {Object} Promise
  */
 function fetchItemVideos(type, id){
-    if(type === "shows"){
+    if(type === SHOWS){
         return _fetchShowVideos(id);
-    }else if(type === "movies"){
+    }else if(type === MOVIES){
         return _fetchMovieVideos(id);
     }
     return null;
@@ -134,7 +151,7 @@ function cleanFilters(filters){
  * @return {String} url
  */
 function _getUrl(page, period) {
-    if (page === "shows") {
+    if (page === SHOWS) {
         if(period === "day") return Api.TV_DAY_TRENDING;
         return Api.TV_WEEK_TRENDING;
     }
@@ -146,11 +163,35 @@ function _getUrl(page, period) {
 /*
  * private helper function
  * @param {string} page
+ * @param {string} period
+ * @return {String} url
+ */
+function _getViewUrl(page, view) {
+    if (view !== "trending") {
+        if(page === SHOWS){
+            if(ApiFilters.shows.includes(view)){
+                return Api.TV + view + ApiConstants.API_KEY + ApiConstants.LANGUAGE_DEFAULT;
+            }
+        }else if(page === MOVIES){
+            // console.log(ApiFilters.movies);
+            if(ApiFilters.movies.includes(view)){
+                return Api.MOVIE + view + ApiConstants.API_KEY + ApiConstants.LANGUAGE_DEFAULT;
+            }
+        }
+    }
+    return _getUrl(page, 'week');
+}
+
+
+
+/*
+ * private helper function
+ * @param {string} page
  * @param {string} value
  * @return {String} url
  */
 function _getSearchUrl(page, value) {
-    if (page === "shows") return Api.TV_SEARCH + value;
+    if (page === SHOWS) return Api.TV_SEARCH + value;
     return Api.MOVIE_SEARCH + value;
 }
 
@@ -170,13 +211,13 @@ function fetchData(url){
             .then(data => {
                 if(data.results !== undefined){
                     //remove splice after review
-                    if(data.results.length > 10){
+                    /*if(data.results.length > 10){
                         data.results.splice(10);
-                    }
+                    }*/
 
                     dispatch(trendAction.fetchTrendingSuccess(data.results));
                 }else{
-                    dispatch(trendAction.fetchTrendingFailure('Something went wrong with loading data'));
+                    dispatch(trendAction.fetchTrendingFailure("Something went wrong with loading data"));
                 }
             })
             .catch(error => {

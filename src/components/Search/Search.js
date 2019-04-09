@@ -45,7 +45,7 @@ class Search extends Component{
         if(this.state.value === undefined || this.state.value.length === 0) return;
         return <Clear
             text={this.props.clear}
-            clickHandler={this.clearHandler}/>;
+            clickHandler={this.clearHandler}/>
     }
 
     clearHandler() {

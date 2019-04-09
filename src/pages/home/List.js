@@ -25,7 +25,7 @@ const List = props => {
             <div className="row">
                 {items.map(item =>
                     <Link
-                        className="col-sm-6 col-xs-12"
+                        className="col-md-4 col-sm-6 col-xs-12"
                         to={'/' + page + '/' + item.id} key={item.id}>
                         <Item item = {item}/>
                     </Link>
@@ -33,7 +33,7 @@ const List = props => {
             </div>
         </ul>
     </div>;
-}
+};
 
 
 List.propTypes = {

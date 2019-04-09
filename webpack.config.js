@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 //const CleanWebpackPlugin = require('clean-webpack-plugin');
-
+require('dotenv').config();
 const htmlPlugin = new HtmlWebPackPlugin({
     template: "./src/index.html",
     filename: "./index.html"
@@ -18,7 +18,7 @@ module.exports = {
     devServer: {
         contentBase: './public',
         hot: true, //Reload - there is some problems with inactivity
-        //host: '20.20.1.4',//LAN - ip address
+        host: '20.20.1.4',//LAN - ip address
         port: 8008,
         historyApiFallback: true,
     },

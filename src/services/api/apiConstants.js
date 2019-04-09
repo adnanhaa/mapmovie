@@ -28,7 +28,9 @@ export const ApiConstants = {
 };
 
 export const ApiFilters = {
-    period : ['week', 'day']
+    period : ['week', 'day'],
+    movies : ['trending', 'popular', 'top_rated', 'upcoming', 'now_playing'],
+    shows : ['trending', 'popular', 'top_rated', 'airing_today', 'on_the_air'],
 };
 
 
